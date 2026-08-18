@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cesta pravého Jánošíka – Spis 02</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #3c3026 0%, #171411 45%, #0b0a09 100%);
+      color: #f2eadf;
+    }
+
+    .archive {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(25, 22, 19, 0.96);
+      border: 2px solid #8e7653;
+      border-radius: 18px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+      text-align: center;
+    }
+
+    .symbol {
+      font-size: 54px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #d6c3a5;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      margin-top: 10px;
+      color: #9f927f;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 1px;
+      background: #665642;
+      margin: 25px 0;
+    }
+
+    .classified {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border: 1px solid #9f8965;
+      color: #d8c5a5;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .case-name {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .status {
+      color: #d98d73;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #8d7757;
+      background: #11100e;
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #c0a87e;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .unlock {
+      background: #806a49;
+      color: white;
+    }
+
+    .unlock:hover {
+      background: #9a8058;
+    }
+
+    .hint {
+      background: #2d2924;
+      color: #f0e4d3;
+      border: 1px solid #5b5044;
+    }
+
+    .hint:hover {
+      background: #39332c;
+    }
+
+    #error {
+      min-height: 24px;
+      margin-top: 12px;
+      color: #e28a78;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .hint-box,
+    .success-box {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #201d19;
+      border: 1px solid #625645;
+      text-align: left;
+    }
+
+    .success-box {
+      border-color: #8e7653;
+    }
+
+    .success-title {
+      text-align: center;
+      color: #d7c39e;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .instruction {
+      margin-top: 18px;
+      padding: 18px;
+      background: #151310;
+      border-left: 4px solid #927952;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .task-title {
+      text-align: center;
+      color: #d7c39e;
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .quote {
+      margin: 20px 0;
+      padding: 16px;
+      text-align: center;
+      font-style: italic;
+      background: #211d18;
+      border: 1px solid #5c4d3c;
+      border-radius: 10px;
+    }
+
+    .photo-rules {
+      margin-top: 18px;
+      padding: 16px;
+      background: #211d18;
+      border-radius: 10px;
+    }
+
+    .photo-rules ul {
+      padding-left: 22px;
+      line-height: 1.7;
+    }
+
+    .warning {
+      margin-top: 20px;
+      padding: 14px;
+      border: 1px solid #7a6548;
+      border-radius: 10px;
+      color: #d8c5a5;
+      text-align: center;
+    }
+
+    .small {
+      margin-top: 30px;
+      color: #8f8374;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="archive">
+
+    <div class="symbol">🥾</div>
+
+    <h1>Cesta pravého Jánošíka</h1>
+
+    <div class="subtitle">
+      Zkouška oddanosti
+    </div>
+
+    <div class="tagline">
+      Kronika skutků, relikvií a pochybných rozhodnutí
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="classified">
+      Zkouška II
+    </div>
+
+    <div class="case-name">
+      SPIS 02 / ZTRACENÁ RELIKVIE
+    </div>
+
+    <div class="status">
+      STATUS: UZAMČENO
+    </div>
+
+    <p>
+      První zkouška odhalila, po jakém druhu předmětu máte pátrat.
+    </p>
+
+    <p>
+      Zadejte odpověď z předchozího spisu.
+    </p>
+
+    <input
+      type="text"
+      id="password"
+      placeholder="Zadejte heslo"
+      autocomplete="off"
+    >
+
+    <button class="unlock" onclick="unlockArchive()">
+      ODEMKNOUT SPIS
+    </button>
+
+    <div id="error"></div>
+
+    <div id="success" class="success-box hidden">
+
+      <div class="success-title">
+        ✅ PŘÍSTUP POVOLEN
+      </div>
+
+      <div class="instruction">
+
+        <div class="task-title">
+          ZTRACENÁ RELIKVIE
+        </div>
+
+        <p>
+          Kroniky Jánošíků hovoří o mimořádně vzácném předmětu,
+          jehož původ je přinejmenším sporný.
+        </p>
+
+        <p>
+          Jedná se o relikvii, kterou by si běžný smrtelník
+          obul na místo, kde se gumáky běžně hodí.
+        </p>
+
+        <p>
+          Ježíš by si je však na tomto místě pravděpodobně obul
+          pouze proto, aby se vysmál ostatním.
+        </p>
+
+        <div class="quote">
+          Hledejte legendární<br>
+          <strong>JEZUSOVU HOLÝNKU</strong>
+        </div>
+
+        <p>
+          Pouhé nalezení relikvie nestačí.
+          Pravost nálezu musí být řádně zdokumentována.
+        </p>
+
+        <div class="photo-rules">
+
+          <strong>FOTOGRAFICKÝ DŮKAZ MUSÍ OBSAHOVAT:</strong>
+
+          <ul>
+            <li>samotnou Jezusovu holýnku,</li>
+            <li>všechny nebo alespoň většinu přítomných Jánošíků,</li>
+            <li>jednoho oddaného poutníka klečícího před relikvií,</li>
+            <li>jednoho člověka prožívajícího zjevné duchovní osvícení,</li>
+            <li>výraznou dávku nedůstojnosti.</li>
+          </ul>
+
+        </div>
+
+        <p>
+          Fotografii odešlete správci zkoušky.
+        </p>
+
+        <p>
+          Po uznání důkazu obdržíte heslo k dalšímu spisu.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <button class="hint" onclick="toggleHint('hint1')">
+      💡 NÁPOVĚDA
+    </button>
+
+    <div id="hint1" class="hint-box hidden">
+      Hledejte u vody, nedaleko chaty.
+    </div>
+
+    <button class="hint" onclick="toggleHint('hint2')">
+      🤦 INDICIE PRO ZOUFALÉ
+    </button>
+
+    <div id="hint2" class="hint-box hidden">
+      Sejděte od chaty rovnou k vodě.
+      Relikvie se nachází někde v tomto prostoru.
+    </div>
+
+    <button class="hint" onclick="toggleHint('hint3')">
+      ☠️ RELIKVII NEJSPÍŠ NĚKDO UKRADL
+    </button>
+
+    <div id="hint3" class="hint-box hidden">
+      Pokud jste prohledali místo podle instrukcí
+      a Jezusova holýnka skutečně zmizela,
+      archiv povoluje nouzový postup.
+      <br><br>
+
+      Heslo k dalšímu spisu je:
+      <br><br>
+
+      <strong style="font-size:22px;">CITRON</strong>
+
+      <div class="warning">
+        Použijte pouze v případě skutečného zmizení relikvie.
+        Zneužití této možnosti bude zaznamenáno v kronice.
+      </div>
+    </div>
+
+    <div class="small">
+      Cesta pravého Jánošíka © 2026
+      <br>
+      Pravost Jezusovy holýnky nebyla potvrzena Vatikánem
+      ani žádnou jinou důvěryhodnou institucí.
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const correctPassword = "relikvie";
+
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function unlockArchive() {
+
+      const enteredPassword =
+        normalizeText(document.getElementById("password").value);
+
+      const error =
+        document.getElementById("error");
+
+      const success =
+        document.getElementById("success");
+
+      if (enteredPassword === correctPassword) {
+
+        error.innerHTML = "";
+        success.classList.remove("hidden");
+
+        document.querySelector(".status").innerHTML =
+          "STATUS: ODEMČENO";
+
+        document.querySelector(".status").style.color =
+          "#b8c99d";
+
+        success.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      } else {
+
+        success.classList.add("hidden");
+
+        const messages = [
+          "❌ Přístup zamítnut.",
+          "❌ Odpověď neodpovídá záznamům v kronice.",
+          "❌ Pravý Jánošík by měl vědět, co hledá.",
+          "❌ Archiv tuto odpověď neuznává.",
+          "❌ Zkuste se vrátit k první zkoušce."
+        ];
+
+        const randomMessage =
+          messages[Math.floor(Math.random() * messages.length)];
+
+        error.innerHTML = randomMessage;
+      }
+    }
+
+    function toggleHint(id) {
+      const element = document.getElementById(id);
+      element.classList.toggle("hidden");
+    }
+
+    document
+      .getElementById("password")
+      .addEventListener("keyup", function(event) {
+
+        if (event.key === "Enter") {
+          unlockArchive();
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>
